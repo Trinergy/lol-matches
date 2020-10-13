@@ -1,6 +1,11 @@
 var RiotRequest = require('riot-lol-api');
+var fs = require('fs');
  
 var riotRequest = new RiotRequest(process.env.RIOT_API_KEY);
+
+var items = JSON.parse(fs.readFileSync('./assets/item.json', 'utf8'));
+var champions = JSON.parse(fs.readFileSync('./assets/champion.json', 'utf8'))
+var summoners = JSON.parse(fs.readFileSync('./assets/summoner.json', 'utf8'))
 
 // Get encrypted Account ID by summoner name
 riotRequest.request('na1', 'summoners', '/lol/summoner/v4/summoners/by-name/Doublelift', function(err, data) {
